@@ -135,7 +135,6 @@ def visualize_after_decode(model, test_loader, device):
     inp = img[0:10, 0, :, :].squeeze().detach().cpu()
     out = output[0:10, 0, :, :].squeeze().detach().cpu()
 
-    # Just some trick to concatenate first ten images next to each other
     inp = inp.permute(1, 0, 2).reshape(28, -1).numpy()
     out = out.permute(1, 0, 2).reshape(28, -1).numpy()
     combined = np.vstack([inp, out])

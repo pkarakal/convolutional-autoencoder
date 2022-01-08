@@ -33,14 +33,12 @@ def centroid_classification(train_set, train_labels, test_set, test_labels):
 def main():
     # load mnist dataset using pytorch and convert it to ndarrays
     train_dataset = download_mnist_dataset('mnist', True, transform=None)
-    split_into_even_and_odd(train_dataset)
     train_df = train_dataset.data.numpy()
     train_label = train_dataset.targets.numpy()
 
     train_df = np.reshape(train_df, (train_df.shape[0], train_df.shape[1] * train_df.shape[2]))
 
     test_dataset = download_mnist_dataset('mnist', False, transform=None)
-    split_into_even_and_odd(test_dataset)
     test_df = test_dataset.data.numpy()
     test_label = test_dataset.targets.numpy()
 

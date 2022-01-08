@@ -4,7 +4,7 @@ from torchvision import transforms
 from autoencoder.utils import download_mnist_dataset, visualize_batch, visualize_image, visualize_after_decode, train, evaluate, stopwatch
 from autoencoder.autoencoder import AutoEncoder
 from torch import nn
-import knn_classifier as knn
+import autoencoder.knn_classifier as knn
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     visualize_batch(train_loader)
     # visualizes an image in more detail
     visualize_image(np.squeeze((next(iter(train_loader))[0])[0].numpy()))
-    encoder = AutoEncoder()
+    encoder = AutoEncoder(dropout_rate=0.2)
     distance = nn.MSELoss()
     criterion = nn.CrossEntropyLoss()
     mse_multiplier = 0.5
